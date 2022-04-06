@@ -1,0 +1,29 @@
+{% extends 'appcoder/base.html' %}
+
+{% block main_content %}
+
+<div class="container mt-5">
+    <table class="table">
+
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for estudiante in estudiantes %}
+                <tr>
+                <td>{{estudiante.nombre}}</td>
+                <td>{{estudiante.apellido}}</td>
+                <td>{{estudiante.email}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+
+
+    </table>
+</div>
+{% endblock main_content %}

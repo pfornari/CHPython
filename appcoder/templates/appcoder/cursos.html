@@ -1,0 +1,50 @@
+{% extends 'appcoder/base.html' %}
+
+{% block main_content %}
+
+<div class="container mt-5">
+    {% if formulario.errors %}
+    <p style="color: red"> Hay problemas con los datos cargados</p>
+    {% endif %}
+        
+
+    <form action="/appcoder/cursos/" method="POST" class="form-group">
+        {% csrf_token %}
+        <table class="table">
+            {{formulario.as_table}}
+        </table>
+
+        <input type="submit" value="Cargar curso" class="btn btn-primary">
+    </form>
+
+</div>
+
+
+<div class="container mt-5">
+    <table class="table">
+
+        <thead>
+            <tr>
+                <th class="table-success">Nombre</th>
+                <th class="table-success">Camada</th>
+                <th class="table-success">Accion</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for curso in cursos %}
+                <tr>
+                <td>{{curso.nombre}}</td>
+                <td>{{curso.camada}}</td>
+                <td>
+                    <a href="{% url 'eliminarCurso' curso.camada %}">Borrar</a>
+                </td>
+                
+                </tr>
+            {% endfor %}
+        </tbody>
+
+
+    </table>
+</div>
+{% endblock main_content %}
